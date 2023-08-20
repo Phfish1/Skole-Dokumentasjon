@@ -9,6 +9,10 @@ class Date:
 
         month_name = self.month_id_to_name()
 
+        ### Checks for wrong inputs
+        if month <= 0 or day <= 0:
+            raise ValueError(f"Please specify a real date: Minimum 1")
+        
         if month > 12 or day > 31:
             raise ValueError(f"Invalid Days or Month specified: Max 12 months, Max 31 Days")
 
@@ -52,9 +56,9 @@ class Date:
             12: "Desember"
         }
 
-        for month in month_id_to_names_dict:
-            if month == self.month:
-                month_name = month_id_to_names_dict[month]
+        for month_id in month_id_to_names_dict:
+            if month_id == self.month:
+                month_name = month_id_to_names_dict[month_id]
                 return month_name
             
     def format_date(self):
@@ -80,7 +84,7 @@ def greatest_date(date1, date2):
 
 
 
-date_1 = Date(22, 12, 2024)
+date_1 = Date(28, 12, 2023)
 date_2 = Date(29, 12, 2024)
 
 date_1_formated = date_1.format_date()
@@ -89,4 +93,5 @@ print(date_1_formated)
 date1_vs_date2_result = greatest_date(date_1, date_2)
 print(date1_vs_date2_result.date)
 print(date1_vs_date2_result.format_date())
+
 
