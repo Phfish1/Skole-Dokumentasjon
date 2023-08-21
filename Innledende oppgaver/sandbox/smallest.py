@@ -1,4 +1,4 @@
-numbers = [9, 2, 4, 5, 2, 4, 10, 8, 1]
+numbers = [9, 2, 4, 5, 2, 4, 10, 8, 1, 3]
 
 
 def get_smallest(numbers_array):

@@ -12,21 +12,37 @@ def largest(array):
             
     return current_number
 
-def smallest(array):    
-    return
+def smallest(array): ### ToDo: Understand wtf you just built, why cant you block 0 the easy way. (I Refuse to use "EZ" built in python functions)
 
+    ### Removes 0
+    for i in range(0, len(array)):
+        if array[i] == 0:
+            array.pop(i)
+
+    ### It just works ♫
+    for i in range(0, len(array)):
+        number = array[i]
+
+        for j in range(0, len(array)):
+            comparing_number = array[j] 
+
+            if number > comparing_number: ### Scary stuff... "Run in debugger"!
+                number = comparing_number
+
+    return number
     
 
 user_number_input = 1
-guesed_numbers = [9, 2, 4, 5, 2, 4, 10, 8, 0]
+guesed_numbers = []
+#guesed_numbers = [9, 2, 4, 5, 2, 4, 10, 8, 0]
 
-#while user_number_input != 0:
-#    try:
-#        user_number_input = int(input("Choose ^~tHe RiGhT~^ Number: "))
-#    except ValueError:
-#        print("Please specify a number")
-#    else:
-#        guesed_numbers.append(user_number_input)
+while user_number_input != 0:
+    try:
+        user_number_input = int(input("Choose ^~tHe RiGhT~^ Number: "))
+    except ValueError:
+        print("Please specify a number")
+    else:
+        guesed_numbers.append(user_number_input)
 
 ### User messages
 print(guesed_numbers)
