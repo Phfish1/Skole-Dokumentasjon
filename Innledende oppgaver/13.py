@@ -1,3 +1,5 @@
+### CHALLENGE IMPORT "03.py" AND USE IT TO CHECK DATES IN DEPARTURE TIMES
+
 
 class HolidayPlan():
     def __init__(self):
@@ -23,12 +25,12 @@ class HolidayPlan():
 
     def selector(self, selected_array, selector_number):
 
-        if selector_number == 0: # Destination
+        if selector_number == 0: ### Destination
             for i in range(0, self.holiday_length):
                 selected_array.append(input(f"Choose Destination: "))
                 #selected_array.append("Norway")
 
-        elif selector_number == 1: # Departure
+        elif selector_number == 1: ### Departure
             for i in range(0, self.holiday_length):
                 date_array = []
                 for j in range(0, 3):
@@ -37,17 +39,16 @@ class HolidayPlan():
                         1: "Month",
                         2: "Year"
                     }
-                    #selected_array.append(1)
                     date_array.append(int(input(f"Choose {j_index_to_text[j]}: ")))
-                    date_array.append(1)
+                    #date_array.append(1)
                 selected_array.append(date_array)
 
-        elif selector_number == 2: # Clothes
+        elif selector_number == 2: ### Clothes
             for i in range(0, self.holiday_length):
                 clothes_array = []
                 for j in range(0, 3):
-                    clothes_array.append("T-Shirt")
                     clothes_array.append(input(f"Select Clothing number {j}: "))
+                    #clothes_array.append("T-Shirt")
                 selected_array.append(clothes_array)
 
         return selected_array
@@ -93,11 +94,6 @@ class HolidayPlan():
                 quit()
             except:
                 print("------\nPlease Select a Value Between 1-3\n------")
-
-
-
-        ### The code bellow did not work, because it assigned the value only to the self.holiday.plan, NOT the other selfs
-        #self.holiday_plan[list(self.holiday_plan.keys())[edit_choice]][self.selector_number_to_property_name(selector_number)] = self.selector([], selector_number) 
         
         if selector_number == 0:
             self.destinations[edit_choice] = self.selector([], selector_number)[0]
@@ -107,27 +103,6 @@ class HolidayPlan():
             self.clothes[edit_choice] = self.selector([], selector_number)[0]
         
         self.holiday_plan = self.uppdate_holiday_plan()
-
-        #print(self.[self.selector_number_to_property_name(selector_number)])
-
-    
-
-
-        #self.holiday_plan = self.uppdate_holiday_plan()
-
-        #for i in range(0, len(self.holiday_plan)): # Useless right now! 
-        #    editing_holiday_entry = self.holiday_plan[list(self.holiday_plan.keys())[edit_choice]]
-        #    print(editing_holiday_entry)
-    
-    def selector_number_to_property_name(self, selector_number):
-        number_to_name_dict = {
-            0: "destinations",
-            1: "departure",
-            2: "clothes"
-        }
-        selector_name = number_to_name_dict[selector_number]
-
-        return selector_name
 
     
     
