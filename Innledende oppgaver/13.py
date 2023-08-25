@@ -4,11 +4,11 @@
 class HolidayPlan():
     def __init__(self):
 
-        self.holiday_length = 1
+        self.holiday_length = 2
 
-        self.destinations = self.selector([], 0)
-        self.departures = self.selector([], 1)
-        self.clothes = self.selector([], 2)
+        self.destinations = self.selector([], 0, self.holiday_length)
+        self.departures = self.selector([], 1, self.holiday_length)
+        self.clothes = self.selector([], 2, self.holiday_length)
 
         self.holiday_plan = self.uppdate_holiday_plan()
 
@@ -23,15 +23,15 @@ class HolidayPlan():
             }
         return holiday_plan
 
-    def selector(self, selected_array, selector_number):
+    def selector(self, selected_array, selector_number, looping_length):
 
         if selector_number == 0: ### Destination
-            for i in range(0, self.holiday_length):
+            for i in range(0, looping_length):
                 selected_array.append(input(f"Choose Destination: "))
                 #selected_array.append("Norway")
 
         elif selector_number == 1: ### Departure
-            for i in range(0, self.holiday_length):
+            for i in range(0, looping_length):
                 date_array = []
                 for j in range(0, 3):
                     j_index_to_text = {
@@ -44,7 +44,7 @@ class HolidayPlan():
                 selected_array.append(date_array)
 
         elif selector_number == 2: ### Clothes
-            for i in range(0, self.holiday_length):
+            for i in range(0, looping_length):
                 clothes_array = []
                 for j in range(0, 3):
                     clothes_array.append(input(f"Select Clothing number {j}: "))
@@ -96,17 +96,17 @@ class HolidayPlan():
                 print("------\nPlease Select a Value Between 1-3\n------")
         
         if selector_number == 0:
-            self.destinations[edit_choice] = self.selector([], selector_number)[0]
+            self.destinations[edit_choice] = self.selector([], selector_number, 1)[0]
         elif selector_number == 1:
-            self.departures[edit_choice] = self.selector([], selector_number)[0]
+            self.departures[edit_choice] = self.selector([], selector_number, 1)[0]
         elif selector_number == 2:
-            self.clothes[edit_choice] = self.selector([], selector_number)[0]
+            self.clothes[edit_choice] = self.selector([], selector_number, 1)[0]
         
         self.holiday_plan = self.uppdate_holiday_plan()
 
     
     
-
+### Problem with
 first_holiday = HolidayPlan()
 
 first_holiday.edit_plan()
