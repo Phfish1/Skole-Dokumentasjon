@@ -1,53 +1,78 @@
-def homemade_splitter(string, first_split):
+def file_to_dict(filename):
 
-    #if first_split == "\n":
-    #    print("hi")
+    file = open(filename, "r")
+    file_lines = file.readlines()
 
-    for i in range(0, len(string) - len(first_split)):
+    file_dictionary = {}
+    for i in range(0, len(file_lines)):
+        curent_line = file_lines[i].split()
+        curent_name = curent_line[0]
+        curent_number = int(curent_line[1])
 
+        file_dictionary[curent_name] = curent_number
 
-        formated_string = ""
+    return file_dictionary
 
-        current_section = ""
-        if i % len(first_split) or i == 0:
-            for j in range(0, len(first_split)):
-                current_section += string[j + i]
-        print(current_section)
+def best_salesmen(sales_dict):
     
-        
-        '''
-        current_char = string[i]
-        current_section = ""
-        for i in range(0, len(first_split)):
-            current_section += string[i]
+    ### Extracts the best "sales men" and appends them to {current_best_list}
+    current_best_list = [["", 0]]
+    for key in sales_dict:
+        current_sales = sales_dict[key]
+        current_salesman = key
 
-        print(current_section)
-        if first_split in current_section:
-            print("--------------------True")
-        '''
-        
+        if current_sales >= current_best_list[0][1]:
+            if current_sales != current_best_list[0][1]:
+                current_best_list[0] = [current_salesman, current_sales]
+            else:
+                current_best_list.append([current_salesman, current_sales])
 
-        #if " " in checking_section:
-        #    print(checking_section)
+    ### Checks if more than 1 "best salesman"
+    if len(current_best_list) > 1:
+        best_salesmen_string = ""
+        for i in range(0, len(current_best_list)):
+            if i + 1 != len(current_best_list):
+                best_salesmen_string += f"{current_best_list[i][0]} with {current_best_list[i][1]} sales & "
+            else:
+                best_salesmen_string += f"{current_best_list[i][0]} with {current_best_list[i][1]} sales"
 
-        #print(string[i])
-        #for j in range(0, len(checking_section)):
-            #print(checking_section[j] == first_split)
-            #print(checking_section[j])
-        #    if checking_section[j] == first_split:
-        #        print(string)
+        return best_salesmen_string ### TO TEST THIS, ADD "3" to the end of "Larsen" in the file "innledende_oppgaver/sandbox/salesnumbers.txt"
+    else:
+        return f"{current_best_list[0][0]} {current_best_list[0][1]}"
 
+def total_sales(sales_dict):
+    sales_sum = 0
+    for key in sales_dict:
+        current_sale = sales_dict[key]
+        sales_sum += current_sale
 
+    return sales_sum
 
+def average_sales(sales_dict):
+    sales_sum = total_sales(sales_dict)
+    average = sales_sum / len(sales_dict)
 
-sales_file = open("sandbox/salesnumbers.txt", "r")
-sales_lines = sales_file.readlines()
+    return average
 
+def main(file):
+    try:
+        company_sales_dictionary = file_to_dict(file)
+        company_best_salesmen = best_salesmen(company_sales_dictionary)
+        company_total_sales = total_sales(company_sales_dictionary)
+        company_average_sales = average_sales(company_sales_dictionary)
 
-for i in range(0, len(sales_lines)):
-    curent_line = sales_lines[i]
+        string_output = ""
+        string_output += f"Months best sales are: {company_best_salesmen}\n"
+        string_output += f"Active salesmen this month: {len(company_sales_dictionary)}, A total of {company_average_sales} sales!\n"
+        string_output += f"Average sales where: {company_total_sales} per salesman"
 
-    #for j in range(0, len(curent_line)):
-    homemade_splitter(curent_line, "rse")
+        return string_output
+    except Exception as error:
+        print("<! Is the file specified correct?, Rember to remove all white space !>")
+        raise error
 
-    #print(curent_line)
+### Initializer code
+file = "innledende_oppgaver/sandbox/salesnumbers.txt"
+result = main(file)
+
+print(result)
