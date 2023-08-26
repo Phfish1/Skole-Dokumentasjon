@@ -36,7 +36,7 @@ def best_salesmen(sales_dict):
             else:
                 best_salesmen_string += f"{current_best_list[i][0]} with {current_best_list[i][1]} sales"
 
-        return best_salesmen_string ### TO TEST THIS, ADD "3" to the end of "Larsen" in the file "innledende_oppgaver/sandbox/salesnumbers.txt"
+        return best_salesmen_string ### TO TEST THIS, UNCOMMENT {file = "innledende_oppgaver/sandbox/salesnumbers2.txt"} IN THE INITIALIZER CODE
     else:
         return f"{current_best_list[0][0]} {current_best_list[0][1]}"
 
@@ -73,6 +73,8 @@ def main(file):
 
 ### Initializer code
 file = "innledende_oppgaver/sandbox/salesnumbers.txt"
+#UNCOMMENT TO TEST "multiple best_salesmen"
+#file = "innledende_oppgaver/sandbox/salesnumbers2.txt"
 result = main(file)
 
 print(result)
