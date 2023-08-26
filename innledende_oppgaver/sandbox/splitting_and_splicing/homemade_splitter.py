@@ -1,9 +1,6 @@
 inputed_splitting_character = "Hello"
 inputed_main_string = "Philip Hello Bear"
 
-inputed_splitting_character = " "
-inputed_main_string = "Heidi 133 \n"
-
 ### Goal 1. Find out how to check if split_char is in main_str 
 # Check split_char VS every single main_str index 
 
