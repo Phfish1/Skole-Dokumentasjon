@@ -6,7 +6,7 @@ What i have learned *(that i bothered writing down 😴)*:
   - This was hugely important in the bubble sorting algoritm, but also really usefull other places
   - Wait... I dont need print every single variable for every error 🤯
 
-- Naming schemes
+- Naming schemes ✍
   - Always name variables as understandable as possible
   - never include spaces in directories
-  - PEP 8. (A little bit of pythons naming schemes / "StYlE gUiDe")
+  - PEP 8. (A little bit of pythons naming schemes / "StYlE gUiDe") 😎
