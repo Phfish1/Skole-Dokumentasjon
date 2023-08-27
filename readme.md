@@ -8,5 +8,6 @@ What i have learned *(that i bothered writing down 😴)*:
 
 - Naming schemes ✍
   - Always name variables as understandable as possible
-  - never include spaces in directories
+  - Never include spaces in directories
+  - Never **start** a file name with a **Number**
   - PEP 8. (A little bit of pythons naming schemes / "StYlE gUiDe") 😎
