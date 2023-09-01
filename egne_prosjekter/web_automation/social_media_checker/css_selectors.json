@@ -1,0 +1,5 @@
+{
+    "rb.no": {
+        "loged_in_element": ".lp_aiduser > amedia-username:nth-child(1) > button:nth-child(1)"
+    }
+}
