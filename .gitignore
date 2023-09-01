@@ -1,2 +1,3 @@
 egne_prosjekter/web_automation/social_media_checker/cookies.json
 *.log
+__pycache__/
