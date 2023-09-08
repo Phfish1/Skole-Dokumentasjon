@@ -15,4 +15,10 @@ School dates accounts for dates where you should be at school
   - **hours_left_of_day**
   - days_left_of_semester
 
+___
+
+- Feautures to be added:
+  - Days til vacation
+  - Days til holiday
+
 Enjoy! :)
