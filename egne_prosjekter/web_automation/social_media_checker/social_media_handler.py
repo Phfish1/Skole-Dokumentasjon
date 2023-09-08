@@ -31,6 +31,7 @@ def is_logged_in(css_selector):
 def open_website(url):
     driver.get(url)
     website_name = url.split("//")[1]
+    print(website_name)
     
     try:
         css_selector = css_selector_data[website_name]["loged_in_element"] # This might be added as a parameter or something
