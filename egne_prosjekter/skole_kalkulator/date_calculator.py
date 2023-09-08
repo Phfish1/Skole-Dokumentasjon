@@ -2,8 +2,6 @@ import datetime
 import json
 import schoolday_handler
 
-import main
-
 def hours_left_of_day(hours_db):
     #now_datetime = datetime.datetime.now().replace(microsecond=0)
     now_datetime = datetime.datetime(2023, 9, 8, 8, 30, 0) ### TESTING BLOCK
@@ -25,8 +23,8 @@ def hours_left_of_day(hours_db):
     
 
 def days_left_of_semester(dates_db):
-    #now_datetime = datetime.datetime.now().replace(microsecond=0)
-    now_datetime = datetime.datetime(2023, 8 ,17)
+    now_datetime = datetime.datetime.now().replace(microsecond=0)
+    #now_datetime = datetime.datetime(2023, 8 ,17) ### TEST BLOCK 
 
     school_end_datetime = dates_db["skoleslutt"]
 
@@ -36,8 +34,8 @@ def days_left_of_semester(dates_db):
 
 
 def days_left_of_school(dates_db):
-    #now_datetime = datetime.datetime.now().replace(microsecond=0)
-    now_datetime = datetime.datetime(2023, 8, 17)
+    now_datetime = datetime.datetime.now().replace(microsecond=0)
+    #now_datetime = datetime.datetime(2023, 8, 17, 0, 0, 1) ### TEST BLOCK (CORRECT ANSWER: 189 days, 23:59:59)
 
     semester_delta = days_left_of_semester(dates_db)
     
@@ -56,6 +54,7 @@ def days_left_of_school(dates_db):
     ### This gets the hours/minutes/seconds remaining of the current day. Probbarly a better way to do it but here i am...
     till_tomorow_delta = (now_datetime.replace(hour=0, minute=0, second=0) + datetime.timedelta(1)) - now_datetime
     till_tomorow_datetime = now_datetime.replace(hour=0, minute=0, second=0) + till_tomorow_delta
+
 
     ### Return amount of schooldays left and the time left of the current day
     return datetime.timedelta(days=schooldays_left, hours=till_tomorow_datetime.hour, minutes=till_tomorow_datetime.minute, seconds=till_tomorow_datetime.second)
