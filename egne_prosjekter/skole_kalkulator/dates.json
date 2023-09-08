@@ -14,10 +14,32 @@
     
                 "skoleslutt": "2024-6-21"
             },
-            
+
             "antal_dager": 365,
             "antal_skoledager": 190,
-            "antal_fridager": 175
+            "antal_fridager": 175,
+
+            "timeplan": {
+                "mailandvgs": {
+                    "2it": {
+                        "monday": {
+                            "time_delta": ["08:15", "15:30"]
+                        },
+                        "tuesday": {
+                            "time_delta": ["08:15", "15:30"]
+                        },
+                        "wednesday": {
+                            "time_delta": ["08:15", "11:30"]
+                        },
+                        "thursday": {
+                            "time_delta": ["08:15", "15:30"]
+                        },
+                        "friday": {
+                            "time_delta": ["09:00", "15:30"]
+                        }
+                    }
+                }
+            }
         }
     },
 
