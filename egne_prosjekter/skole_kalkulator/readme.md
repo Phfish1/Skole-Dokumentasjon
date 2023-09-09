@@ -20,5 +20,4 @@ Enjoy! :)
 ___
 
 - Feautures to be added:
-  - Days til vacation
-  - Days til holiday
+  - What is next { vacation OR holiday }

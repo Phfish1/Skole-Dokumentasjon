@@ -2,6 +2,7 @@ import json
 import datetime
 import date_handler
 import date_calculator
+import vacation_timer
 
 def get_db_base(municipality, years):
     dates_db_file = open("egne_prosjekter/skole_kalkulator/dates.json")
@@ -22,6 +23,14 @@ def main():
     hours_left_of_schoolday = date_calculator.hours_left_of_day(now, viken_hours, viken_dates)
     schooldays_left = date_calculator.days_left_of_school(now, viken_dates, viken_hours)
 
+    days_till_springbreak = vacation_timer.time_till_vacation(now, viken_dates["høstferie"])
+    schooldays_till_springbreak = vacation_timer.schooldays_till_vacation(now, viken_dates["høstferie"], viken_dates, viken_hours)
+
+    print(days_till_springbreak)
+    print(schooldays_till_springbreak)
+
+    print()
+    
     print(days_left_of_semester)
     print(hours_left_of_schoolday)
     print(schooldays_left)
