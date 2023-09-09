@@ -2,11 +2,8 @@ import datetime
 import json
 import schoolday_handler
 
-import main
-
-def hours_left_of_day(hours_db, dates_db):
-    now_datetime = datetime.datetime.now().replace(microsecond=0)
-    #now_datetime = datetime.datetime(2024, 6, 21, 8, 35, 29) ### TESTING BLOCK ALSO LINKED TO OTHER FUNCTIONS WITHIN FILE
+def hours_left_of_day(now, hours_db, dates_db):
+    now_datetime = now.replace(microsecond=0)
 
     current_weekday = datetime.datetime.strftime(now_datetime, "%A").lower()
 
@@ -24,25 +21,24 @@ def hours_left_of_day(hours_db, dates_db):
         return school_end_datetime - now_datetime
     
 
-def days_left_of_semester(dates_db):
-    now_datetime = datetime.datetime.now().replace(microsecond=0)
+def days_left_of_semester(now, dates_db):
+    now_datetime = now.replace(microsecond=0)
     #now_datetime = datetime.datetime(2024, 6 ,21) ### TEST BLOCK 
     #now_datetime = datetime.datetime(2023, 8 ,16) ### TEST BLOCK 
 
     school_end_datetime = dates_db["skoleslutt"]
-
     time_left_of_semester = school_end_datetime - now_datetime + datetime.timedelta(1) ### + timedelta 1 because last day of school is 21.st not 20.th
 
     return time_left_of_semester
 
-def days_left_of_school(dates_db, hours_db):
+def days_left_of_school(now, dates_db, hours_db):
 
-    now_datetime = datetime.datetime.now().replace(microsecond=0)
+    now_datetime = now.replace(microsecond=0)
 
     #now_datetime = datetime.datetime(2024, 6, 21, 0, 0, 1) ### TEST BLOCK (LINKED TO "now_datetime" IN "days_left_of_semester")
     #now_datetime = datetime.datetime(2023, 8, 16, 0, 0, 1) ### TEST BLOCK 
 
-    semester_delta = days_left_of_semester(dates_db)
+    semester_delta = days_left_of_semester(now, dates_db)
 
     schooldays_left = 0
 
@@ -58,7 +54,7 @@ def days_left_of_school(dates_db, hours_db):
 
 
     ### Math here to convert seconds to hour minutes and seconds,
-    time_left_of_schoolday = hours_left_of_day(hours_db, dates_db)
+    time_left_of_schoolday = hours_left_of_day(now, hours_db, dates_db)
     till_tomorow_datetime = now_datetime = datetime.datetime.now().replace(hour=(time_left_of_schoolday.seconds // 60 // 60), minute=( (time_left_of_schoolday.seconds // 60) % 60 ), second=(time_left_of_schoolday.seconds % 60), microsecond=0)
 
     ### Return amount of schooldays left and the time left of the current day

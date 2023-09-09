@@ -1,1 +1,2 @@
-.replace(hour=0, minute=0, second=0)
+
+        return school_end_datetime - now_datetime
