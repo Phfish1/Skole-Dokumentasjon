@@ -3,6 +3,10 @@ import datetime
 
 def is_schoolday(day, dates_db):
 
+    #print(day)
+    if not is_semester(day, dates_db):
+        return False
+
     if is_weekend(day):
         return False
     
@@ -12,11 +16,6 @@ def is_schoolday(day, dates_db):
     if is_holiday(day, dates_db):
         return False
     
-    spring_break = dates_db["høstferie"]
-    christmas_break = dates_db["juleferie"]
-    vinter_break = dates_db["vinterferie"]
-    easter_break = dates_db["påskeferie"]
-
     ### Vacations
     if is_vacation(day, dates_db["høstferie"]):
         return False
@@ -69,3 +68,16 @@ def is_vacation(day, vacation):
             return True
         
     return False
+
+
+
+def is_semester(day, dates_db):
+    
+    if day < dates_db["skolestart"]:
+        #print(day)
+        return False
+    elif day > dates_db["skoleslutt"] + datetime.timedelta(1):
+        #print(day)
+        return False
+
+    return True

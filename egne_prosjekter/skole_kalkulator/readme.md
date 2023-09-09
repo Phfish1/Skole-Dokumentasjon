@@ -2,8 +2,8 @@
 
 > Simple countdown for all our favorite dates 😋
 
-this calculator calculates the amount of school days left.
-School dates accounts for dates where you should be at school
+this calculator calculates the amount of school days left, and the time left of that school day.
+School dates accounts for dates where you should be at school.
 
 - what it accounts for: ⚙️
   - Holidays 🇳🇴
