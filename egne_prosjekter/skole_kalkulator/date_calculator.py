@@ -14,11 +14,11 @@ def hours_left_of_day(now, hours_db, dates_db):
         #print(ValueError(f"Today is {current_weekday}, not a school day :)"))
         return datetime.timedelta(0,0,0)
 
-    if school_end_datetime - now_datetime < datetime.timedelta(0,0,0):
+    if school_end_datetime - now_datetime <= datetime.timedelta(0,0,0):
         #print(ValueError(f"Time is {now_datetime.time()}, You are no longer at school :)"))
         return datetime.timedelta(0,0,0) # Might also just return "-Day Value"
     else:
-        return school_end_datetime - now_datetime
+        return school_end_datetime - now_datetime ### Could have calculated only hours in class, storing each single class time and using for loop to add times to each other. BUT this is better. 
     
 
 def days_left_of_semester(now, dates_db):

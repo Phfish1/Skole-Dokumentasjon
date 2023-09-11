@@ -16,7 +16,7 @@ def is_schoolday(day, dates_db):
     if is_holiday(day, dates_db):
         return False
     
-    ### Vacations
+    ### Vacations Note: Should have had an {object} in dates.json specifically for vacations, THIS IS HARD CODED!
     if is_vacation(day, dates_db["høstferie"]):
         return False
 

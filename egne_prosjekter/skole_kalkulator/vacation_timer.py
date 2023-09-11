@@ -9,14 +9,16 @@ def time_till_vacation(now, vacation):
     now_datetime = now.replace(microsecond=0)
     till_vacation = vacation[0] - now_datetime
 
-    return till_vacation
+    return till_vacation + datetime.timedelta(1)
+    #return till_vacation
 
 def schooldays_till_vacation(now, vacation, dates_db, hours_db):
     now_datetime = now.replace(microsecond=0)
     days_till_vacation = time_till_vacation(now, vacation).days
 
     schooldays_left = 0
-    for day in range(1, days_till_vacation + 1):
+    #for day in range(1, days_till_vacation + 1):
+    for day in range(1, days_till_vacation): ### POTENTIAL CHANGE LINKED TO time_till_vacation | return till_vacation + datetime.timedelta(1)
         current_day = now_datetime.replace(hour=0, minute=0, second=0) + datetime.timedelta(day)
 
         if schoolday_handler.is_schoolday(current_day, dates_db):

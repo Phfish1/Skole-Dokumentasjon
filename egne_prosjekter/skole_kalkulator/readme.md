@@ -21,3 +21,4 @@ ___
 
 - Feautures to be added:
   - What is next { vacation OR holiday }
+  - Time left of vacation
