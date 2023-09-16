@@ -13,5 +13,5 @@ What i have learned *(that i bothered writing down 😴)*:
   - PEP 8. (A little bit of pythons naming schemes / "StYlE gUiDe") 😎
 
 - Dividing projects into seperate files 📝
-  - Its way easier to keep track of functions when you split them up into seperate files, or "handlers" as i like to call them
+  - Its way easier to keep track of functions when you split them up into seperate files, or "handlers".
   - Importing with python is easy. Compared to ☢️ JavaScript ☢️
