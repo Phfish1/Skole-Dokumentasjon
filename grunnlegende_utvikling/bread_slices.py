@@ -45,6 +45,8 @@
 #   IF pålegg equals to cheese THEN:
 #       Use ostehøvel
 
+### ...
+
 import random
 
 class Pålegg():
@@ -82,7 +84,7 @@ class Pålegg():
                         subtract_choice = input(f"Select pålegg_type ({1}-{len(self.pålegg_tools)}): ").lower()
 
                         if subtract_choice == "e":
-                            update_choice = "e"
+                            update_choice = "e" 
                             break
                         else:
                             subtract_choice = int(subtract_choice) - 1
