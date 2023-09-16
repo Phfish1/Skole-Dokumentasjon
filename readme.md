@@ -11,3 +11,7 @@ What i have learned *(that i bothered writing down 😴)*:
   - Never include spaces in directories
   - Never **start** a file name with a **Number**
   - PEP 8. (A little bit of pythons naming schemes / "StYlE gUiDe") 😎
+
+- Dividing projects into seperate files 📝
+  - Its way easier to keep track of functions when you split them up into seperate files, or "handlers" as i like to call them
+  - Importing with python is easy. Compared to ☢️ JavaScript ☢️
