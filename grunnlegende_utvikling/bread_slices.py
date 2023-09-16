@@ -130,49 +130,68 @@ def put_pålegg_on_bread(bread, bread_slices ,pålegg_liste):
 
 def divide_bread_on_family(bread_list, family_list):
 
-    ## How to you find (2) The amount of family members not getting another bread
-    ## Find 6, the amounts of bread given out
+    bread_to_family_member = {}
 
-
-    #leftover_bread = len(bread_list) % family_size # Amount of bread left that does not go up
-    #bread_given_out = len(bread_list) - leftover_bread
-    #amount_net_getting_another_bread = bread_given_out - leftover_bread
-    #ensured_bread_amount = len(bread_list) // family_size
-
-
-
-    bread_left = len(bread_list)
-
-
-    if bread_left > len(family_list):
-        # Gi en brød til hver
-        bread_left -= len(family_list)
+    family_size = len(family_list)
     
-    while bread_left > 0:
+    for i in range(0, family_size):
+        bread_to_family_member[family_list[i]] = []
+
+
+    leftover = False
+
+    while not leftover:
+        if len(bread_list) >= family_size: # Give 1 bread each
+            # Remove random bread based on family size
+
+            for member in family_list:
+                random_bread_index = random.randint(0, len(bread_list) - 1)
+                bread_to_family_member[member].append(bread_list[random_bread_index])
+                bread_list.pop(random_bread_index)
+        else:
+            leftover = True
+
+    leftover_getters_list = []
+    while len(bread_list) > 0 and leftover:
         
-        print(f"bread fiven to family member {family_list[random.randint(0, len(family_list) - 1)]}") 
-        # Random does not work, DIVIDED needs to still be fair
-        # Maybe a FOR loop!
-        bread_left -= 1
+        
+        random_family_member = family_list[random.randint(0, family_size - 1)]
+
+        if random_family_member not in leftover_getters_list:
+            random_bread_index = random.randint(0, len(bread_list) - 1)
+
+
+            bread_to_family_member[random_family_member].append(bread_list[random_bread_index])
+
+            leftover_getters_list.append(random_family_member)
+
+            bread_list.pop(random_bread_index)
+
+    return bread_to_family_member
+
         
 
 
+    
+        
 
-
-  
-
-# 10 / 6 = 1.6
-# 5 4
 
 bread = "Whole wheat"
-bread_slices = 10
+bread_slices = 8
 
-family_list = [FamilyMember("Åse"), {}, {}, {}, {}, {}]  
+family_list = [FamilyMember("Pappa"), FamilyMember("Mamma"), FamilyMember("Aleksander"), FamilyMember("Philip"), FamilyMember("Sophie"), FamilyMember("Henrik")]  
 pålegg_liste = [Pålegg("leverpostei", "knife"), Pålegg("cheese", "ostehøvel"), Pålegg("salami", "hand"), Pålegg("egg", "egg_slicer").boil()]
 
 finished_bread_list = put_pålegg_on_bread(bread, bread_slices, pålegg_liste)
 
-divide_bread_on_family(finished_bread_list, family_list)
+bread_to_family_member = divide_bread_on_family(finished_bread_list, family_list)
 
+for item in bread_to_family_member:
+    print(f"{item.name}:")
+
+    for bread in bread_to_family_member[item]:
+        print(f"( {item.name} ) takes the {'{'} {bread.bread} {'}'} Bread, and uses the {'{'} {bread.tool} {'}'} to put {'{'} {bread.pålegg} {'}'} on")
+
+    print("")
 
 
