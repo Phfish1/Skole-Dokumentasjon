@@ -45,7 +45,6 @@
 #   IF pålegg equals to cheese THEN:
 #       Use ostehøvel
 
-### ...
 
 import random
 
